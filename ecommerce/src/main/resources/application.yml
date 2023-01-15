@@ -4,9 +4,6 @@ server:
 spring:
   application:
     name: discoveryservice
-  cloud:
-    loadbalancer:
-      enabled: false
 
 eureka:
   client:
