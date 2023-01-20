@@ -16,7 +16,9 @@ public class WebSecurity{
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
-        return http.authorizeHttpRequests().requestMatchers("/users/**").permitAll()
+        return http.authorizeHttpRequests()
+                .anyRequest().permitAll()
+                    //.requestMatchers("user-service/users/**").permitAll()
                 .and().headers().frameOptions().disable()
                 .and().build();
     }
