@@ -14,6 +14,11 @@ spring:
       ddl-auto: create-drop
     show-sql: true
     generate-ddl: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+
 eureka:
   instance:
     instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.valud}}
@@ -26,3 +31,4 @@ eureka:
 logging:
   level:
     com.example.catalogservice: DEBUG
+

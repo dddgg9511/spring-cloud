@@ -2,7 +2,8 @@ package com.example.catalogservice.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "catalog")
+@EntityListeners(AuditingEntityListener.class)
 public class Catalogs implements Serializable {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,6 +26,6 @@ public class Catalogs implements Serializable {
 
 
     @Column(nullable = false, updatable = false, insertable = false)
-    @ColumnDefault(value = "NOW()")
+    @CreatedDate
     private LocalDateTime createdAt;
 }
