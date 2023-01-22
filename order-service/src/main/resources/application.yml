@@ -1,0 +1,31 @@
+server:
+  port: 0
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://localhost:3306/orders?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.valud}}
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+
+logging:
+  level:
+    com.example.catalogservice: DEBUG
+
+
